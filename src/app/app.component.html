@@ -1,0 +1,30 @@
+<h1>Product Variants</h1>
+
+<form>
+
+<table style="width:100%" border="2">
+  <tr>
+    <th>Business</th>
+    <th>Country</th>
+    <th>1</th>
+    <th>2</th>
+    <th>3</th>
+    <th>4</th>
+    <th>5</th>
+    <th>Total</th>
+  </tr>
+
+  <tr *ngFor="let item of combinedArray; let i = index">
+    <td>{{item.business.name}}</td>
+    <td>{{item.country.name}}</td>
+    <td *ngFor="let data of item.data">
+      <input type="text" style="width: 80%" (input)="calculateTotal($event, item)" [(ngModel)]="data.value" [ngModelOptions]="{standalone: true}">
+    </td>
+    <td>{{item.total}}</td>
+  </tr>
+
+</table>
+
+<h4>Grand Total {{grandTotal}}</h4>
+
+</form>
